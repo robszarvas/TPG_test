@@ -23,6 +23,32 @@ function Task1(){
 }
 
 /**
+ * Task 2
+ *
+ * Sorting an array (implementing bubbe sort)
+ *
+ * @param $a is an array in the following format array(1,2,3,4,5,6,0), containing numbers
+ * @note this was the fastest solution other than using built in sorting functionality
+ */
+function Task2( $a ){
+	function swap( &$arr, $a, $b) {
+		$tmp     = $arr[$a];
+		$arr[$a] = $arr[$b];
+		$arr[$b] = $tmp;
+	}
+	
+	$size = count($a);
+	for ( $i = 0; $i < $size; $i++ ) {
+		for ( $j = 0; $j < $size - 1 - $i; $j++ ) {
+			if ( $a[$j+1] < $a[$j] ) {
+				swap( $a, $j, $j+1 );
+			}
+		}
+	}
+	return $a;
+}
+
+/**
  * Task 3
  *
  * String comparison
