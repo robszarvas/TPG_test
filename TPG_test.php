@@ -23,6 +23,42 @@ function Task1(){
 }
 
 /**
+ * Task 3
+ *
+ * String comparison
+ */
+function Task3( $s1, $s2 ){
+	$ret = '';
+	foreach ( str_split($s1) as $k => $l){
+		# $s1 is longer than $s2
+		if ( !isset( $s2[$k]) ){
+			$ret = 'First difference between two strings at position '. $k .': Second string has no character at position!';
+			break;
+		}
+		
+		# standard character mismatch
+		if ( $l !== $s2[$k] ) {
+			$ret = 'First difference between two strings at position '. $k .': "'.$l.'" vs "'.$s2[$k].'"';
+			break;
+		}
+	}
+	
+	# s2 is longer than s1 and no mismatch so far
+	if ( strlen ($s2) > strlen ($s1) &&
+	   	 $ret == ''
+	   ){
+		$ret = 'First difference between two strings at position '. strlen ($s1) .': Firat string has no character at position!';
+	}
+	
+	# no difference
+	if ( $ret == ''){
+		$ret = 'No difference between the two strings';
+	}
+	
+	return $ret;
+}
+
+/**
  * Task 4
  *
  * Converting arabic numbers to roman numerals
