@@ -17,7 +17,7 @@ function Task1(){
 		for ( $j = 1; $j <= $k; $j++ ){
 			print "*";
 		}
-		
+
 		print "<br/>";
 	}
 }
@@ -36,7 +36,7 @@ function Task2( $a ){
 		$arr[$a] = $arr[$b];
 		$arr[$b] = $tmp;
 	}
-	
+
 	$size = count($a);
 	for ( $i = 0; $i < $size; $i++ ) {
 		for ( $j = 0; $j < $size - 1 - $i; $j++ ) {
@@ -52,6 +52,8 @@ function Task2( $a ){
  * Task 3
  *
  * String comparison
+ *
+ * @param $s1 and $s2 are strings
  */
 function Task3( $s1, $s2 ){
 	$ret = '';
@@ -61,26 +63,26 @@ function Task3( $s1, $s2 ){
 			$ret = 'First difference between two strings at position '. $k .': Second string has no character at position!';
 			break;
 		}
-		
+
 		# standard character mismatch
 		if ( $l !== $s2[$k] ) {
 			$ret = 'First difference between two strings at position '. $k .': "'.$l.'" vs "'.$s2[$k].'"';
 			break;
 		}
 	}
-	
+
 	# s2 is longer than s1 and no mismatch so far
 	if ( strlen ($s2) > strlen ($s1) &&
 	   	 $ret == ''
 	   ){
 		$ret = 'First difference between two strings at position '. strlen ($s1) .': Firat string has no character at position!';
 	}
-	
+
 	# no difference
 	if ( $ret == ''){
 		$ret = 'No difference between the two strings';
 	}
-	
+
 	return $ret;
 }
 
@@ -88,16 +90,18 @@ function Task3( $s1, $s2 ){
  * Task 4
  *
  * Converting arabic numbers to roman numerals
+ *
+ * @param $num is a number
  */
-function Task4( $num ) {  
-  $ret     = '';
-  $decimal = array( 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 );
-  $roman   = array( "M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I" );
-  for ( $i = 0; $i < count($decimal); $i++) {
-    while ( $num % $decimal[$i] < $num ) {     
-      $ret .= $roman[$i];
-      $num  = $num - $decimal[$i];
+function Task4( $num ) {
+    $ret     = '';
+    $decimal = array( 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 );
+    $roman   = array( "M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I" );
+    for ( $i = 0; $i < count($decimal); $i++) {
+        while ( $num % $decimal[$i] < $num ) {
+            $ret .= $roman[$i];
+            $num  = $num - $decimal[$i];
+        }
     }
-  }
-  return $ret;
+    return $ret;
 }
